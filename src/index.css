@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Animated gradient buttons */
+  .btn-gradient {
+    @apply relative overflow-hidden;
+  }
+  
+  .btn-gradient::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 opacity-0 transition-opacity duration-300;
+  }
+  
+  .btn-gradient:hover::before {
+    @apply opacity-100;
+  }
+  
+  .btn-gradient > span {
+    @apply relative z-10;
+  }
+
+  /* Custom card hover effects */
+  .card-hover-effect {
+    @apply transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl;
+  }
+  
+  /* Animated progress bar */
+  .progress-animated .progress-indicator {
+    @apply relative overflow-hidden;
+  }
+  
+  .progress-animated .progress-indicator::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30;
+    animation: shimmer 2s infinite;
+    transform: translateX(-100%);
+  }
+  
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Custom hero section styling */
+  .hero-bg {
+    @apply bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  /* Custom nav hover effect */
+  .nav-link-hover {
+    position: relative;
+  }
+  
+  .nav-link-hover::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-0.5 bg-primary-500;
+    width: 0;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link-hover:hover::after {
+    width: 100%;
+  }
+  
+  /* Glass morphism effect */
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/70 border border-white/20;
+  }
+  
+  /* Status badges */
+  .status-badge {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .status-badge::before {
+    content: '';
+    @apply absolute inset-0 opacity-15;
+  }
+  
+  .status-badge.active {
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .status-badge.active::before {
+    @apply bg-green-500;
+  }
+  
+  .status-badge.upcoming {
+    @apply bg-blue-100 text-blue-800;
+  }
+  
+  .status-badge.upcoming::before {
+    @apply bg-blue-500;
+  }
+  
+  .status-badge.completed {
+    @apply bg-gray-100 text-gray-800;
+  }
+  
+  .status-badge.completed::before {
+    @apply bg-gray-500;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-300 rounded-full hover:bg-primary-400 transition-colors;
+}
+
+/* Body styling */
+body {
+  @apply bg-background text-gray-900 antialiased;
+}
+
+/* Enhanced focus outlines for accessibility */
+:focus-visible {
+  @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+}
